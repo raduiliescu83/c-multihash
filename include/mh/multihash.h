@@ -4,6 +4,27 @@
 #include <stddef.h>
 
 /**
+ * Functions for working with a multihash.
+ * A multihash is a hash with a prefix "code" that
+ * helps determine what type of hash this is.
+ * code name
+ * 0x00 identity
+ * 0x11 sha1
+ * 0x12 sha2-256
+ * 0x13 sha2-512
+ * 0x14 sha3-512
+ * 0x15 sha3-384
+ * 0x16 sha3-256
+ * 0x17 sha3-224
+ * 0x18 shake-128
+ * 0x19 shake-256
+ * 0x40 blake2b
+ * 0x41 blake2s
+ * # 0x0400-0x040f reserved for application specific functions
+ * # 0x14 formerly had the name "sha3", now deprecated
+ */
+
+/**
  * returns hash code or error (which is < 0)
  * @param mh the multihash
  * @param len the length of the multihash
