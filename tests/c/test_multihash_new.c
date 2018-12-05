@@ -12,7 +12,7 @@ static char *test_multihash_new_crafts_right_multihash(void) {
 	int error;
 	unsigned char buf[256]; // much bigger than needed
 	size_t digest_len = -1;
-	const unsigned char *digest = NULL;
+	unsigned char *digest = NULL;
 
 	error = mh_multihash_digest(sha1_example, sha1_example_length,
 		&digest, &digest_len);
@@ -30,12 +30,14 @@ static char *test_multihash_new_crafts_right_multihash(void) {
 static char *test_multihash_new_is_reversible(void) {
 	int error = MH_E_NO_ERROR;
 	int code = MH_H_SHA3_512;
+
 	const unsigned char *digest = random_512;
 	const size_t digest_len = 512 / 8;
 
 	unsigned char mh[256];
 	const size_t mh_len = mh_new_length(code, digest_len);
 
+	init_random_512();
 	error = mh_new(mh, MH_H_SHA3_512, digest, digest_len);
 	mu_assert("creating multihash", error == MH_E_NO_ERROR);
 

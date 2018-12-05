@@ -1,4 +1,5 @@
 *
 !.gitignore
 !minunit.h
+!examples.h
 !*.c
